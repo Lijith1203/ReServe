@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - ReServe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #000;
+            color: white;
+            overflow: hidden;
+        }
+
+        /* Spline Container */
+        .spline-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .spline-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Overlay Content */
+        .overlay-content {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.9);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.8s ease;
+            pointer-events: none;
+            backdrop-filter: blur(20px);
+        }
+
+        .overlay-content.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #2e8b57;
+            font-family: 'Aquarium', cursive;
+            margin-bottom: 2rem;
+            transform: translateY(50px);
+            transition: transform 0.8s ease;
+            text-shadow: 0 0 20px rgba(46, 139, 87, 0.5);
+        }
+
+        .overlay-content.active .logo {
+            transform: translateY(0);
+        }
+
+        .welcome-text {
+            font-size: 1.5rem;
+            color: white;
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.2s;
+        }
+
+        .overlay-content.active .welcome-text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.4s;
+        }
+
+        .overlay-content.active .auth-buttons {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .auth-btn {
+            padding: 1rem 2rem;
+            border: 2px solid #2e8b57;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            background: rgba(46, 139, 87, 0.1);
+        }
+
+        .auth-btn.primary {
+            background: #2e8b57;
+            color: white;
+        }
+
+        .auth-btn.outline {
+            background: transparent;
+            color: #2e8b57;
+        }
+
+        .auth-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(46, 139, 87, 0.3);
+            border-color: #3cb371;
+        }
+
+        .auth-btn.primary:hover {
+            background: #3cb371;
+            border-color: #3cb371;
+        }
+
+        .auth-btn.outline:hover {
+            background: #2e8b57;
+            color: white;
+        }
+
+        /* Instructions */
+        .instructions {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            text-align: center;
+            z-index: 20;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(46, 139, 87, 0.3);
+        }
+
+        .instructions.hidden {
+            opacity: 0;
+        }
+
+        .instructions.visible {
+            opacity: 1;
+        }
+
+        /* Skip Button */
+        .skip-btn {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            padding: 0.8rem 1.5rem;
+            background: rgba(46, 139, 87, 0.9);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            z-index: 30;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(15px);
+            opacity: 0;
+            border: 1px solid rgba(46, 139, 87, 0.3);
+        }
+
+        .skip-btn:hover {
+            background: rgba(46, 139, 87, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.3);
+        }
+
+        .skip-btn.visible {
+            opacity: 1;
+        }
+
+        /* Interaction Indicator */
+        .interaction-indicator {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border: 2px solid rgba(46, 139, 87, 0.3);
+            border-radius: 50%;
+            z-index: 5;
+            opacity: 0;
+            transition: all 0.5s ease;
+            pointer-events: none;
+        }
+
+        .interaction-indicator.active {
+            opacity: 1;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                border-color: rgba(46, 139, 87, 0.3);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                border-color: rgba(46, 139, 87, 0.8);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                border-color: rgba(46, 139, 87, 0.3);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            .welcome-text {
+                font-size: 1.2rem;
+            }
+
+            .auth-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .auth-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Spline 3D Module -->
+    <div class="spline-container">
+        <iframe src='https://my.spline.design/r4xbot-x0mE3MrgBknjcJ4eTVP8qiUv/' frameborder='0' width='100%' height='100%'></iframe>
+    </div>
+
+    <!-- Skip Button -->
+    <button class="skip-btn" id="skipBtn">Skip to Login</button>
+
+    <!-- Overlay Content -->
+    <div class="overlay-content" id="overlay">
+        <div class="logo">ReServe</div>
+        <p class="welcome-text">Experience the future of donation platforms</p>
+        <div class="auth-buttons">
+            <a href="login.html" class="auth-btn primary">
+                <i class="fas fa-sign-in-alt"></i>
+                Sign In
+            </a>
+            <a href="signup.html" class="auth-btn outline">
+                <i class="fas fa-user-plus"></i>
+                Join Now
+            </a>
+        </div>
+    </div>
+
+    <!-- Instructions -->
+    <div class="instructions" id="instructions">
+        <p>✨ Interact with the 3D scene to wake up the robot ✨</p>
+    </div>
+
+    <!-- Interaction Indicator -->
+    <div class="interaction-indicator" id="interactionIndicator"></div>
+
+    <script>
+        // Show overlay after interaction
+        let interactionCount = 0;
+        const overlay = document.getElementById('overlay');
+        const instructions = document.getElementById('instructions');
+        const skipBtn = document.getElementById('skipBtn');
+        const interactionIndicator = document.getElementById('interactionIndicator');
+
+        // Skip button functionality
+        skipBtn.addEventListener('click', () => {
+            overlay.classList.add('active');
+            instructions.classList.add('hidden');
+            skipBtn.style.display = 'none';
+        });
+
+        // Track various interactions
+        document.addEventListener('click', handleInteraction);
+        document.addEventListener('mousemove', handleInteraction);
+        document.addEventListener('scroll', handleInteraction);
+        document.addEventListener('keydown', handleInteraction);
+
+        function handleInteraction() {
+            interactionCount++;
+            
+            // Show interaction indicator after 3 interactions
+            if (interactionCount >= 3 && interactionIndicator) {
+                interactionIndicator.classList.add('active');
+            }
+            
+            // Show instructions after 8 interactions
+            if (interactionCount >= 8 && !instructions.classList.contains('visible')) {
+                instructions.classList.add('visible');
+            }
+            
+            // Show skip button after 12 interactions
+            if (interactionCount >= 12 && !skipBtn.classList.contains('visible')) {
+                skipBtn.classList.add('visible');
+            }
+            
+            // Show overlay after 20 interactions
+            if (interactionCount >= 20) {
+                setTimeout(() => {
+                    overlay.classList.add('active');
+                    instructions.classList.add('hidden');
+                    skipBtn.style.display = 'none';
+                    if (interactionIndicator) {
+                        interactionIndicator.classList.remove('active');
+                    }
+                }, 1500);
+                
+                // Remove event listeners after showing overlay
+                document.removeEventListener('click', handleInteraction);
+                document.removeEventListener('mousemove', handleInteraction);
+                document.removeEventListener('scroll', handleInteraction);
+                document.removeEventListener('keydown', handleInteraction);
+            }
+        }
+
+        // Show skip button after 12 seconds if user wants to skip
+        setTimeout(() => {
+            if (interactionCount < 12) {
+                skipBtn.classList.add('visible');
+            }
+        }, 12000);
+    </script>
+</body>
+</html> 

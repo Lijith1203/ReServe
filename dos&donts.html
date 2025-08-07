@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Dos & Don'ts - ReServe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { background: #f7f9fa; margin: 0; }
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 2rem; }
+        .nav-logo span { font-weight: bold; font-size: 1.3rem; color: #2e8b57; }
+        .nav-menu { list-style: none; display: flex; gap: 1.2rem; margin: 0; padding: 0; }
+        .nav-link { text-decoration: none; color: #222; font-weight: 500; transition: color 0.2s; }
+        .nav-link:hover, .nav-link.active { color: #2e8b57; }
+        .dosdonts-hero {
+            background: #2e8b57;
+            color: #fff;
+            padding: 3rem 0 2rem 0;
+            text-align: center;
+            margin-top: 64px;
+            box-shadow: 0 2px 8px rgba(46,139,87,0.08);
+            border-radius: 0 0 18px 18px;
+        }
+        .dosdonts-hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .dosdonts-hero p { font-size: 1.2rem; }
+        .dosdonts-section { max-width: 900px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 2.5rem 2rem; }
+        .dosdonts-grid { display: flex; gap: 2rem; flex-wrap: wrap; }
+        .dosdonts-col { flex: 1 1 300px; }
+        .dos-list, .donts-list { list-style: none; padding: 0; margin: 0; }
+        .dos-list li, .donts-list li { display: flex; align-items: flex-start; gap: 0.7rem; margin-bottom: 1rem; font-size: 1.08rem; }
+        .dos-list li i { color: #2e8b57; }
+        .donts-list li i { color: #dc3545; }
+        .dosdonts-section h2 { margin-top: 0; font-size: 1.5rem; color: #2e8b57; }
+        .dosdonts-section h3 { margin-bottom: 0.7rem; color: #444; }
+        @media (max-width: 700px) {
+            .dosdonts-grid { flex-direction: column; }
+            .nav-container { padding: 0.5rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo"><span>ReServe</span></div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="donation.html" class="nav-link">Donate</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="rewards.html" class="nav-link">Rewards</a></li>
+                <li><a href="welcome.html" class="nav-link">Login</a></li>
+                <li><a href="settings.html" class="nav-link">Settings</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="dosdonts-hero">
+        <h1>Donation Dos & Don'ts</h1>
+        <p>Help us make a positive impact by following these simple guidelines for food and clothing donations.</p>
+    </section>
+    <section class="dosdonts-section">
+        <h2>Food Donation</h2>
+        <div class="dosdonts-grid">
+            <div class="dosdonts-col">
+                <h3><i class="fas fa-check-circle"></i> Dos</h3>
+                <ul class="dos-list">
+                    <li><i class="fas fa-check"></i> Donate non-perishable, unopened, and properly sealed food items.</li>
+                    <li><i class="fas fa-check"></i> Check expiration dates and only donate food that is within date.</li>
+                    <li><i class="fas fa-check"></i> Include ingredient and allergen information if possible.</li>
+                    <li><i class="fas fa-check"></i> Ensure packaging is clean and undamaged.</li>
+                    <li><i class="fas fa-check"></i> Wash your hands before handling donations.</li>
+                </ul>
+            </div>
+            <div class="dosdonts-col">
+                <h3><i class="fas fa-times-circle"></i> Don'ts</h3>
+                <ul class="donts-list">
+                    <li><i class="fas fa-times"></i> Do not donate expired or spoiled food.</li>
+                    <li><i class="fas fa-times"></i> Avoid donating homemade or partially used items.</li>
+                    <li><i class="fas fa-times"></i> Do not include food with damaged, bulging, or rusted cans.</li>
+                    <li><i class="fas fa-times"></i> Avoid items without clear labeling or ingredient info.</li>
+                    <li><i class="fas fa-times"></i> Do not donate perishable items unless specifically requested.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="dosdonts-section">
+        <h2>Clothes Donation</h2>
+        <div class="dosdonts-grid">
+            <div class="dosdonts-col">
+                <h3><i class="fas fa-check-circle"></i> Dos</h3>
+                <ul class="dos-list">
+                    <li><i class="fas fa-check"></i> Wash and clean all clothes before donating.</li>
+                    <li><i class="fas fa-check"></i> Donate gently used, undamaged, and wearable items.</li>
+                    <li><i class="fas fa-check"></i> Sort and fold clothes neatly.</li>
+                    <li><i class="fas fa-check"></i> Include shoes, accessories, and seasonal items in good condition.</li>
+                    <li><i class="fas fa-check"></i> Check pockets for personal items before donating.</li>
+                </ul>
+            </div>
+            <div class="dosdonts-col">
+                <h3><i class="fas fa-times-circle"></i> Don'ts</h3>
+                <ul class="donts-list">
+                    <li><i class="fas fa-times"></i> Do not donate dirty, stained, or torn clothing.</li>
+                    <li><i class="fas fa-times"></i> Avoid donating undergarments unless new and packaged.</li>
+                    <li><i class="fas fa-times"></i> Do not include items with strong odors or pet hair.</li>
+                    <li><i class="fas fa-times"></i> Avoid donating single shoes or socks.</li>
+                    <li><i class="fas fa-times"></i> Do not donate items with missing buttons or broken zippers.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ReServe</h3>
+                    <p>Connecting communities through food and clothing donations.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="donation.html">Donate</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Volunteer</a></li>
+                        <li><a href="#">Partnership</a></li>
+                        <li><a href="#">Donate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope"></i> reserve2025@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Charity St, City, State</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ReServe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

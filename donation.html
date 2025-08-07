@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - ReServe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span>ReServe</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="donation.html" class="nav-link active">Donate</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="rewards.html" class="nav-link">Rewards</a></li>
+                <li><a href="welcome.html" class="nav-link">Login</a></li>
+                <li><a href="settings.html" class="nav-link">Settings</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="donation-hero">
+        <div class="container">
+            <div class="donation-hero-content">
+                <h1>Make a Difference Today</h1>
+                <p>Your donations help families in need. Choose what you'd like to donate and make an impact in your community.</p>
+                <div class="donation-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-tshirt"></i>
+                        <h3>Clothes Donated</h3>
+                        <span class="stat-number">15,420</span>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Food Items</h3>
+                        <span class="stat-number">8,950</span>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <h3>Families Helped</h3>
+                        <span class="stat-number">2,340</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Type Selection -->
+    <section class="donation-type-section">
+        <div class="container">
+            <h2 class="section-title">What would you like to donate?</h2>
+            <div class="donation-type-grid">
+                <div class="donation-type-card" id="clothes-card">
+                    <div class="type-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3>Clothes & Textiles</h3>
+                    <p>Donate gently used clothing, shoes, and accessories</p>
+                    <ul class="type-features">
+                        <li><i class="fas fa-check"></i> Clean and in good condition</li>
+                        <li><i class="fas fa-check"></i> No tears or major stains</li>
+                        <li><i class="fas fa-check"></i> Appropriate for all ages</li>
+                    </ul>
+                    <button class="select-type-btn" id="open-clothes-form">Donate Clothes</button>
+                </div>
+
+                <div class="donation-type-card" id="food-card">
+                    <div class="type-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Food & Groceries</h3>
+                    <p>Donate non-perishable food items and groceries</p>
+                    <ul class="type-features">
+                        <li><i class="fas fa-check"></i> Non-perishable items</li>
+                        <li><i class="fas fa-check"></i> Within expiration date</li>
+                        <li><i class="fas fa-check"></i> Properly sealed packaging</li>
+                    </ul>
+                    <button class="select-type-btn" id="open-food-form">Donate Food</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clothes Donation Form -->
+    <section class="donation-form-section" id="clothes-form-section" style="display: none;">
+        <div class="container">
+            <div class="form-header">
+                <button class="back-btn" onclick="hideForms()">
+                    <i class="fas fa-arrow-left"></i> Back to Selection
+                </button>
+                <h2 class="section-title">Clothes Donation Form</h2>
+                <p>Please provide details about the clothing items you're donating</p>
+            </div>
+
+            <form class="donation-form" id="clothes-form">
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <h3><i class="fas fa-user"></i> Personal Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="clothes-name">Full Name *</label>
+                            <input type="text" id="clothes-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="clothes-email">Email Address *</label>
+                            <input type="email" id="clothes-email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="clothes-phone">Phone Number</label>
+                            <input type="tel" id="clothes-phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="clothes-address">Pickup Address *</label>
+                            <input type="text" id="clothes-address" name="address" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item Details -->
+                <div class="form-section">
+                    <h3><i class="fas fa-tshirt"></i> Item Details</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="clothes-category">Clothing Category *</label>
+                            <select id="clothes-category" name="category" required>
+                                <option value="">Select Category</option>
+                                <option value="mens-clothing">Men's Clothing</option>
+                                <option value="womens-clothing">Women's Clothing</option>
+                                <option value="kids-clothing">Kids' Clothing</option>
+                                <option value="baby-clothing">Baby Clothing</option>
+                                <option value="shoes">Shoes</option>
+                                <option value="accessories">Accessories (Bags, Jewelry, etc.)</option>
+                                <option value="winter-gear">Winter Gear (Coats, Jackets)</option>
+                                <option value="formal-wear">Formal Wear</option>
+                                <option value="sports-wear">Sports Wear</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="clothes-size">Size Range</label>
+                            <select id="clothes-size" name="size">
+                                <option value="">Select Size</option>
+                                <option value="xs">XS</option>
+                                <option value="s">S</option>
+                                <option value="m">M</option>
+                                <option value="l">L</option>
+                                <option value="xl">XL</option>
+                                <option value="xxl">XXL</option>
+                                <option value="kids-2t">Kids 2T</option>
+                                <option value="kids-3t">Kids 3T</option>
+                                <option value="kids-4t">Kids 4T</option>
+                                <option value="kids-5t">Kids 5T</option>
+                                <option value="baby-0-3m">Baby 0-3M</option>
+                                <option value="baby-3-6m">Baby 3-6M</option>
+                                <option value="baby-6-12m">Baby 6-12M</option>
+                                <option value="baby-12-18m">Baby 12-18M</option>
+                                <option value="baby-18-24m">Baby 18-24M</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="clothes-quantity">Number of Items *</label>
+                            <input type="number" id="clothes-quantity" name="quantity" min="1" max="100" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="clothes-description">Description</label>
+                            <textarea id="clothes-description" name="description" rows="3" placeholder="Describe the items, brands, colors, etc."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Condition Assessment -->
+                <div class="form-section">
+                    <h3><i class="fas fa-clipboard-check"></i> Condition Assessment</h3>
+                    <div class="condition-grid">
+                        <div class="condition-item">
+                            <label for="clothes-cleanliness">Cleanliness *</label>
+                            <select id="clothes-cleanliness" name="cleanliness" required>
+                                <option value="">Select Condition</option>
+                                <option value="excellent">Excellent - Like new, freshly washed</option>
+                                <option value="good">Good - Clean, minor wear</option>
+                                <option value="fair">Fair - Clean but shows some wear</option>
+                                <option value="poor">Poor - Needs cleaning or repair</option>
+                            </select>
+                        </div>
+                        <div class="condition-item">
+                            <label for="clothes-wear">Wear & Tear *</label>
+                            <select id="clothes-wear" name="wear" required>
+                                <option value="">Select Condition</option>
+                                <option value="none">No visible wear</option>
+                                <option value="minimal">Minimal wear (slight pilling, minor fading)</option>
+                                <option value="moderate">Moderate wear (some fading, small holes)</option>
+                                <option value="significant">Significant wear (multiple issues)</option>
+                            </select>
+                        </div>
+                        <div class="condition-item">
+                            <label for="clothes-stains">Stains *</label>
+                            <select id="clothes-stains" name="stains" required>
+                                <option value="">Select Condition</option>
+                                <option value="none">No stains</option>
+                                <option value="minor">Minor stains (barely noticeable)</option>
+                                <option value="moderate">Moderate stains (noticeable but not major)</option>
+                                <option value="major">Major stains (significant discoloration)</option>
+                            </select>
+                        </div>
+                        <div class="condition-item">
+                            <label for="clothes-damage">Damage *</label>
+                            <select id="clothes-damage" name="damage" required>
+                                <option value="">Select Condition</option>
+                                <option value="none">No damage</option>
+                                <option value="minor">Minor damage (small tears, loose buttons)</option>
+                                <option value="moderate">Moderate damage (repairable issues)</option>
+                                <option value="major">Major damage (significant tears, broken zippers)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="clothes-condition-notes">Additional Condition Notes</label>
+                        <textarea id="clothes-condition-notes" name="condition_notes" rows="3" placeholder="Any additional details about the condition of your items..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Pickup Information -->
+                <div class="form-section">
+                    <h3><i class="fas fa-calendar-alt"></i> Pickup Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="clothes-pickup-date">Preferred Pickup Date *</label>
+                            <input type="date" id="clothes-pickup-date" name="pickup_date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="clothes-pickup-time">Preferred Pickup Time *</label>
+                            <select id="clothes-pickup-time" name="pickup_time" required>
+                                <option value="">Select Time</option>
+                                <option value="morning">Morning (9 AM - 12 PM)</option>
+                                <option value="afternoon">Afternoon (12 PM - 3 PM)</option>
+                                <option value="evening">Evening (3 PM - 6 PM)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="clothes-special-instructions">Special Instructions</label>
+                        <textarea id="clothes-special-instructions" name="special_instructions" rows="2" placeholder="Any special pickup instructions, gate codes, etc."></textarea>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-submit">
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Submit Clothes Donation
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Food Donation Form -->
+    <section class="donation-form-section" id="food-form-section" style="display: none;">
+        <div class="container">
+            <div class="form-header">
+                <button class="back-btn" onclick="hideForms()">
+                    <i class="fas fa-arrow-left"></i> Back to Selection
+                </button>
+                <h2 class="section-title">Food Donation Form</h2>
+                <p>Please provide details about the food items you're donating</p>
+            </div>
+
+            <form class="donation-form" id="food-form">
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <h3><i class="fas fa-user"></i> Personal Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="food-name">Full Name *</label>
+                            <input type="text" id="food-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="food-email">Email Address *</label>
+                            <input type="email" id="food-email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="food-phone">Phone Number</label>
+                            <input type="tel" id="food-phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="food-address">Pickup Address *</label>
+                            <input type="text" id="food-address" name="address" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item Details -->
+                <div class="form-section">
+                    <h3><i class="fas fa-utensils"></i> Food Item Details</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="food-category">Food Category *</label>
+                            <select id="food-category" name="category" required>
+                                <option value="">Select Category</option>
+                                <option value="canned-goods">Canned Goods</option>
+                                <option value="dry-goods">Dry Goods (Rice, Pasta, Beans)</option>
+                                <option value="beverages">Beverages</option>
+                                <option value="snacks">Snacks & Crackers</option>
+                                <option value="baby-food">Baby Food & Formula</option>
+                                <option value="baking">Baking Supplies</option>
+                                <option value="condiments">Condiments & Sauces</option>
+                                <option value="breakfast">Breakfast Items</option>
+                                <option value="frozen">Frozen Foods</option>
+                                <option value="fresh">Fresh Produce</option>
+                                <option value="dairy">Dairy Products</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="food-quantity">Quantity *</label>
+                            <input type="number" id="food-quantity" name="quantity" min="1" max="100" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="food-weight">Weight (lbs) *</label>
+                            <input type="number" id="food-weight" name="weight" min="0.1" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="food-brand">Brand (if applicable)</label>
+                            <input type="text" id="food-brand" name="brand" placeholder="e.g., Campbell's, Kraft, etc.">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="food-description">Item Description *</label>
+                        <textarea id="food-description" name="description" rows="3" placeholder="Describe the food items, flavors, sizes, etc." required></textarea>
+                    </div>
+                </div>
+
+                <!-- Expiration & Safety -->
+                <div class="form-section">
+                    <h3><i class="fas fa-clock"></i> Expiration & Safety</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="food-expiration">Expiration Date *</label>
+                            <input type="date" id="food-expiration" name="expiration_date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="food-manufacture">Manufacture Date (if known)</label>
+                            <input type="date" id="food-manufacture" name="manufacture_date">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="food-storage">Storage Conditions *</label>
+                            <select id="food-storage" name="storage" required>
+                                <option value="">Select Storage</option>
+                                <option value="pantry">Pantry/Storage Room</option>
+                                <option value="refrigerated">Refrigerated</option>
+                                <option value="frozen">Frozen</option>
+                                <option value="cool-dry">Cool, Dry Place</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="food-temperature">Current Temperature</label>
+                            <select id="food-temperature" name="temperature">
+                                <option value="">Select Temperature</option>
+                                <option value="room">Room Temperature</option>
+                                <option value="refrigerated">Refrigerated (32-40°F)</option>
+                                <option value="frozen">Frozen (0°F or below)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Condition Assessment -->
+                <div class="form-section">
+                    <h3><i class="fas fa-clipboard-check"></i> Condition Assessment</h3>
+                    <div class="condition-grid">
+                        <div class="condition-item">
+                            <label for="food-packaging">Packaging Condition *</label>
+                            <select id="food-packaging" name="packaging" required>
+                                <option value="">Select Condition</option>
+                                <option value="excellent">Excellent - Sealed, no damage</option>
+                                <option value="good">Good - Minor packaging wear</option>
+                                <option value="fair">Fair - Some packaging damage</option>
+                                <option value="poor">Poor - Significant damage</option>
+                            </select>
+                        </div>
+                        <div class="condition-item">
+                            <label for="food-seal">Seal Integrity *</label>
+                            <select id="food-seal" name="seal" required>
+                                <option value="">Select Condition</option>
+                                <option value="intact">Intact - Original seal unbroken</option>
+                                <option value="minor-damage">Minor damage - Still safe</option>
+                                <option value="compromised">Compromised - Not safe for donation</option>
+                            </select>
+                        </div>
+                        <div class="condition-item">
+                            <label for="food-appearance">Visual Appearance *</label>
+                            <select id="food-appearance" name="appearance" required>
+                                <option value="">Select Condition</option>
+                                <option value="excellent">Excellent - Normal appearance</option>
+                                <option value="good">Good - Slight discoloration</option>
+                                <option value="fair">Fair - Noticeable changes</option>
+                                <option value="poor">Poor - Significant changes</option>
+                            </select>
+                        </div>
+                        <div class="condition-item">
+                            <label for="food-odor">Odor Check *</label>
+                            <select id="food-odor" name="odor" required>
+                                <option value="">Select Condition</option>
+                                <option value="normal">Normal - Expected food odor</option>
+                                <option value="slight-off">Slight off-odor</option>
+                                <option value="strong-off">Strong off-odor</option>
+                                <option value="no-odor">No odor (may indicate spoilage)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="food-condition-notes">Additional Condition Notes</label>
+                        <textarea id="food-condition-notes" name="condition_notes" rows="3" placeholder="Any additional details about the condition of your food items..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Allergen Information -->
+                <div class="form-section">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Allergen Information</h3>
+                    <div class="allergen-grid">
+                        <div class="allergen-item">
+                            <input type="checkbox" id="food-allergen-peanuts" name="allergens[]" value="peanuts">
+                            <label for="food-allergen-peanuts">Contains Peanuts</label>
+                        </div>
+                        <div class="allergen-item">
+                            <input type="checkbox" id="food-allergen-tree-nuts" name="allergens[]" value="tree-nuts">
+                            <label for="food-allergen-tree-nuts">Contains Tree Nuts</label>
+                        </div>
+                        <div class="allergen-item">
+                            <input type="checkbox" id="food-allergen-dairy" name="allergens[]" value="dairy">
+                            <label for="food-allergen-dairy">Contains Dairy</label>
+                        </div>
+                        <div class="allergen-item">
+                            <input type="checkbox" id="food-allergen-eggs" name="allergens[]" value="eggs">
+                            <label for="food-allergen-eggs">Contains Eggs</label>
+                        </div>
+                        <div class="allergen-item">
+                            <input type="checkbox" id="food-allergen-soy" name="allergens[]" value="soy">
+                            <label for="food-allergen-soy">Contains Soy</label>
+                        </div>
+                        <div class="allergen-item">
+                            <input type="checkbox" id="food-allergen-wheat" name="allergens[]" value="wheat">
+                            <label for="food-allergen-wheat">Contains Wheat</label>
+                        </div>
+                        <div class="allergen-item">
+                            <input type="checkbox" id="food-allergen-fish" name="allergens[]" value="fish">
+                            <label for="food-allergen-fish">Contains Fish</label>
+                        </div>
+                        <div class="allergen-item">
+                            <input type="checkbox" id="food-allergen-shellfish" name="allergens[]" value="shellfish">
+                            <label for="food-allergen-shellfish">Contains Shellfish</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="food-allergen-notes">Additional Allergen Notes</label>
+                        <textarea id="food-allergen-notes" name="allergen_notes" rows="2" placeholder="Any other allergen information or special dietary considerations..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Pickup Information -->
+                <div class="form-section">
+                    <h3><i class="fas fa-calendar-alt"></i> Pickup Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="food-pickup-date">Preferred Pickup Date *</label>
+                            <input type="date" id="food-pickup-date" name="pickup_date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="food-pickup-time">Preferred Pickup Time *</label>
+                            <select id="food-pickup-time" name="pickup_time" required>
+                                <option value="">Select Time</option>
+                                <option value="morning">Morning (9 AM - 12 PM)</option>
+                                <option value="afternoon">Afternoon (12 PM - 3 PM)</option>
+                                <option value="evening">Evening (3 PM - 6 PM)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="food-special-instructions">Special Instructions</label>
+                        <textarea id="food-special-instructions" name="special_instructions" rows="2" placeholder="Any special pickup instructions, temperature requirements, etc."></textarea>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-submit">
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Submit Food Donation
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact-section">
+        <div class="container">
+            <div class="impact-content">
+                <h2>Your Donation Makes a Real Impact</h2>
+                <p>Every item you donate helps families in need. Here's how your generosity creates positive change:</p>
+                <div class="impact-grid">
+                    <div class="impact-card">
+                        <i class="fas fa-heart"></i>
+                        <h3>Immediate Relief</h3>
+                        <p>Your donations provide immediate assistance to families facing hardship</p>
+                    </div>
+                    <div class="impact-card">
+                        <i class="fas fa-recycle"></i>
+                        <h3>Environmental Impact</h3>
+                        <p>Reduce waste and promote sustainability through reuse</p>
+                    </div>
+                    <div class="impact-card">
+                        <i class="fas fa-hands-helping"></i>
+                        <h3>Community Building</h3>
+                        <p>Strengthen community bonds through acts of kindness</p>
+                    </div>
+                    <div class="impact-card">
+                        <i class="fas fa-star"></i>
+                        <h3>Earn Rewards</h3>
+                        <p>Gain points and rewards for your generous contributions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ReServe</h3>
+                    <p>Connecting communities through food and clothing donations.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="donation.html">Donate</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Volunteer</a></li>
+                        <li><a href="#">Partnership</a></li>
+                        <li><a href="#">Donate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope"></i> reserve2025@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Charity St, City, State</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ReServe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Donation form navigation
+        function showClothesForm() {
+            document.getElementById('clothes-form-section').style.display = 'block';
+            document.getElementById('food-form-section').style.display = 'none';
+            document.querySelector('.donation-type-section').style.display = 'none';
+            document.querySelector('.donation-hero').style.display = 'none';
+            
+            // Scroll to form
+            document.getElementById('clothes-form-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showFoodForm() {
+            document.getElementById('food-form-section').style.display = 'block';
+            document.getElementById('clothes-form-section').style.display = 'none';
+            document.querySelector('.donation-type-section').style.display = 'none';
+            document.querySelector('.donation-hero').style.display = 'none';
+            
+            // Scroll to form
+            document.getElementById('food-form-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function hideForms() {
+            document.getElementById('clothes-form-section').style.display = 'none';
+            document.getElementById('food-form-section').style.display = 'none';
+            document.querySelector('.donation-type-section').style.display = 'block';
+            document.querySelector('.donation-hero').style.display = 'block';
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Form validation and submission handling
+        function validateForm(form) {
+            const requiredFields = form.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('error');
+                    isValid = false;
+                } else {
+                    field.classList.remove('error');
+                }
+            });
+            
+            return isValid;
+        }
+
+        function showSuccessMessage(message) {
+            // Create success notification
+            const notification = document.createElement('div');
+            notification.className = 'success-notification';
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <i class="fas fa-check-circle"></i>
+                    <p>${message}</p>
+                </div>
+            `;
+            
+            // Add styles
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #2e8b57;
+                color: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+                z-index: 1000;
+                animation: slideIn 0.3s ease;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Remove after 5 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 5000);
+        }
+
+        // Form submission handling
+        document.getElementById('clothes-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (validateForm(this)) {
+                showSuccessMessage('Thank you for your clothes donation! We will contact you soon to arrange pickup.');
+                this.reset();
+                hideForms();
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        });
+
+        document.getElementById('food-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (validateForm(this)) {
+                showSuccessMessage('Thank you for your food donation! We will contact you soon to arrange pickup.');
+                this.reset();
+                hideForms();
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        });
+
+        // Set minimum date for pickup to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('clothes-pickup-date').min = today;
+        document.getElementById('food-pickup-date').min = today;
+        document.getElementById('food-expiration').min = today;
+
+        // Add CSS for animations
+        const notifStyle = document.createElement('style');
+        notifStyle.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+            
+            .error {
+                border-color: #ff6b6b !important;
+                box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2) !important;
+            }
+            
+            .success-notification i {
+                margin-right: 10px;
+                font-size: 1.2em;
+            }
+        `;
+        document.head.appendChild(notifStyle);
+
+        // Real-time validation
+        document.querySelectorAll('input[required], select[required], textarea[required]').forEach(field => {
+            field.addEventListener('blur', function() {
+                if (!this.value.trim()) {
+                    this.classList.add('error');
+                } else {
+                    this.classList.remove('error');
+                }
+            });
+            
+            field.addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.classList.remove('error');
+                }
+            });
+        });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var clothesBtn = document.getElementById('open-clothes-form');
+        var foodBtn = document.getElementById('open-food-form');
+        if (clothesBtn) clothesBtn.addEventListener('click', showClothesForm);
+        if (foodBtn) foodBtn.addEventListener('click', showFoodForm);
+      });
+    </script>
+</body>
+</html> 
